@@ -8,7 +8,6 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
   const [btnLogin, setBtnLogin] = useState("Login");
   const { loggedInUser } = useContext(UserContext);
-  console.log(loggedInUser);
   return (
     <div className="flex justify-between shadow-lg">
       <div className="logo-container">
