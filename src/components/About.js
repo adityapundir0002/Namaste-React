@@ -13,7 +13,7 @@ class About extends Component {
       <div>
         <h1>About</h1>
         <h2>This is About Page</h2>
-        <div>{/* <UserCard name="Aditya Pundir (function)" /> */}</div>
+        <div><UserCard name="Aditya Pundir (function)" /></div>
         <div>
           <UserCardClass
             name="Aditya Pundir (class)"

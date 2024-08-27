@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import ResCard from "./ResCard";
 import Shimmer from "./Shimmer";
 import useResList from "../utils/useResList";
+import { discountResCard } from "./ResCard";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/userContext";
 
 const Body = () => {
   const listOfRestaurants = useResList();
+  const DiscountCard = discountResCard(ResCard);
   const onlineStatus = useOnlineStatus();
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [inputText, setInputText] = useState("");
+  const { setUserName, loggedInUser } = useContext(UserContext);
 
   useEffect(() => {
     setFilteredRestaurant(listOfRestaurants);
@@ -58,7 +62,7 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div p-1 m-1>
+        <div className="p-1 m-1">
           <button
             className="bg-gray-200 px-3 py-1 m-2 rounded-lg "
             onClick={handleFilterClick}
@@ -66,12 +70,24 @@ const Body = () => {
             Top Rated Restaurants
           </button>
         </div>
+        <div className="p-1 m-1">
+          userName:{" "}
+          <input
+            className="p-1 border border-black"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+        </div>
       </div>
 
       <div className="flex flex-wrap">
         {filteredRestaurant.map((item) => (
           <Link key={item?.info?.id} to={"/restaurants/" + item?.info?.id}>
-            <ResCard resData={item} />
+            {item?.info?.aggregatedDiscountInfoV3 ? (
+              <DiscountCard resData={item} />
+            ) : (
+              <ResCard resData={item} />
+            )}
           </Link>
         ))}
       </div>

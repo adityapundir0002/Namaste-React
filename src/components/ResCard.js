@@ -17,4 +17,15 @@ const ResCard = ({ resData }) => {
     </div>
   );
 };
+
+export const discountResCard = (ResCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="text-white bg-black m-2 p-2 rounded-md absolute">Discount 50%</label>
+        <ResCard {...props} />
+      </div>
+    );
+  };
+};
 export default ResCard;
