@@ -43,6 +43,7 @@ const Body = () => {
       <div className="flex items-center">
         <div className="p-1 m-1">
           <input
+            data-testid="searchInput"
             type="text"
             className="truncate border border-solid border-black "
             value={inputText}
@@ -64,6 +65,7 @@ const Body = () => {
         </div>
         <div className="p-1 m-1">
           <button
+          data-testid="ratingButton"
             className="bg-gray-200 px-3 py-1 m-2 rounded-lg "
             onClick={handleFilterClick}
           >

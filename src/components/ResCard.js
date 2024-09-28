@@ -3,7 +3,7 @@ import { CDN_URL } from "../utils/constants";
 const ResCard = ({ resData }) => {
   const { name, cuisines, avgRating } = resData?.info;
   return (
-    <div className="p-1 m-2 w-[235] h-[400] rounded-lg  bg-gray-100 hover:bg-gray-200">
+    <div data-testid="resCard" className="p-1 m-2 w-[235] h-[400] rounded-lg  bg-gray-100 hover:bg-gray-200">
       <img
         className="rounded-lg w-[225] h-[200]"
         alt="res-logo"
@@ -22,7 +22,9 @@ export const discountResCard = (ResCard) => {
   return (props) => {
     return (
       <div>
-        <label className="text-white bg-black m-2 p-2 rounded-md absolute">Discount 50%</label>
+        <label className="text-white bg-black m-2 p-2 rounded-md absolute">
+          Discount 50%
+        </label>
         <ResCard {...props} />
       </div>
     );
